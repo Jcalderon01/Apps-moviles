@@ -29,7 +29,8 @@ class _QuizPageState extends State<QuizPage> {
     "La cobalamina es una vitamina",
     "true",
     "false",
-    "false"
+    "false",
+    "true"
   ];
   List<bool> respuestas = [
     true,
@@ -38,29 +39,40 @@ class _QuizPageState extends State<QuizPage> {
     true,
     false,
     false,
+    true,
   ];
-  int numeroPregunta = 0;
 
-  respuesta() {
-    int i = 0;
-    bool respuestaCorrecta = respuestas[numeroPregunta];
-    if (respuestaCorrecta == respuestas[i]) {
-      puntuacion.add(
-        const Icon(
-          Icons.check,
-          color: Colors.green,
-          size: 40,
-        ),
+  int numeroPregunta = 0;
+  respuesta(bool respuestaUsuario) {
+    if (numeroPregunta >= preguntas.length - 1) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return const AlertDialog(
+            title: Text("Quiz completado"),
+            content: Text("Has respondido todas las preguntas"),
+          );
+        },
       );
-      numeroPregunta++;
-    } else if (respuestaCorrecta == respuestas[i]) {
-      puntuacion.add(
-        const Icon(
-          Icons.close,
-          color: Colors.red,
-          size: 40,
-        ),
-      );
+    } else {
+      bool respuestaCorrecta = respuestas[numeroPregunta];
+      if (respuestaUsuario == respuestaCorrecta) {
+        puntuacion.add(
+          const Icon(
+            Icons.check,
+            color: Colors.green,
+            size: 40,
+          ),
+        );
+      } else {
+        puntuacion.add(
+          const Icon(
+            Icons.close,
+            color: Colors.red,
+            size: 40,
+          ),
+        );
+      }
       numeroPregunta++;
     }
   }
@@ -96,7 +108,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
                 onPressed: () {
                   setState(() {
-                    respuesta();
+                    respuesta(true);
                   });
                 },
               ),
@@ -116,7 +128,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
                 onPressed: () {
                   setState(() {
-                    respuesta();
+                    respuesta(false);
                   });
                 },
               ),
