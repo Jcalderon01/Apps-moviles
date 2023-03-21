@@ -12,26 +12,25 @@ class FrontPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _list = List.generate(
-      10,
-      (index) => Padding(
-        padding: const EdgeInsets.all(10),
-        child: Container(
-          height: 150,
-          decoration: BoxDecoration(
-            color: Colors.grey,
-            borderRadius: BorderRadius.circular(30),
-          ),
-        ),
-      ),
-    );
+        10,
+        (index) => Padding(
+            padding: const EdgeInsets.all(10),
+            child: Container(
+              height: 150,
+              decoration: BoxDecoration(
+                color: Theme.of(context).primaryColorDark,
+                borderRadius: BorderRadius.circular(30),
+              ),
+            )));
 
     return Container(
       height: 800,
-      decoration: Constant.sheetBoxDecoration(Theme.of(context).primaryColor),
+      decoration: Constant.sheetBoxDecoration(
+          Theme.of(context).scaffoldBackgroundColor),
       child: ListView(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
-        children: [],
+        children: _list,
       ),
     );
   }
