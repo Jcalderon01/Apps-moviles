@@ -1,3 +1,4 @@
+import 'package:balance/pages/add_entries.dart';
 import 'package:balance/pages/add_expenses.dart';
 import 'package:balance/widgets/animation/custom_animation.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +40,7 @@ class CustomFAB extends StatelessWidget {
           Navigator.push(
               context,
               CustomAnimation(
-                  page: const AddExpenses(),
+                  page: const AddEntries(),
                   duracion: const Duration(milliseconds: 800),
                   alineacion: const Alignment(0.8, 1)));
         },

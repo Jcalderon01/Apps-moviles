@@ -5,9 +5,12 @@ class AddEntries extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Agregar ingresos"),
+      ),
       body: Center(
-        child: Text("Desde entradas"),
+        child: Text("Desde ingresos"),
       ),
     );
   }
